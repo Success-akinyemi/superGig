@@ -3,6 +3,7 @@ import Mailgen from 'mailgen'
 import sendEmail from "../utils/sendEmail.js";
 import crypto from 'crypto'
 import TokenModel from "../models/Tokens.js";
+import { registerMail } from "./mailer.js";
 
 const mailGenerator = new Mailgen({
     theme: 'default',
@@ -13,89 +14,156 @@ const mailGenerator = new Mailgen({
 })
 
 
+/**
+ export async function register (req, res, next){
+     const { email, username, password, referredBy } = req.body
+     console.log( email, username,password)
+ 
+     if(!email || !password || !username ){
+         return res.status(400).json({ success: false, data: 'please provide all required fields'})
+     }
+ 
+     try {
+         const existingEmail = await UserModel.findOne({ email });
+         if(existingEmail){
+             return res.status(400).json({ success: false, data: 'Email Alreay exists. Please use another email'})
+         }
+ 
+         const user = await UserModel.create({
+             username, email, password
+         })
+         console.log('USER CREATED')
+ 
+         const referralLink = `${process.env.CLIENT_URL}/register?ref=${user._id}`
+         user.referralLink = referralLink
+         await user.save()
+ 
+         if(referredBy){
+             const referrer = await UserModel.findById({ _id: referredBy })
+             if(referrer){
+                 referrer.referrals.push(user._id)
+             }
+             await referrer.save()
+             user.referredBy = referrer._id
+             await user.save()    
+         }
+         
+ 
+         const token = await new TokenModel({
+             userId: user._id,
+             token: crypto.randomBytes(32).toString('hex')
+         }).save()
+ 
+         const verifyUrl = `${process.env.MAIL_WEBSITE_LINK}/${user._id}/verify/${token.token}`
+ 
+         try {
+             // send mail
+             const emailContent = {
+                 body: {
+                     intro: 'SIGNUP SUCCESSFUL, PLEASE VERIFY EMAIL',
+                     action: {
+                         instructions: `You Have Successfull Signup to SuperGig, Please Click on the Button Below to verify your Email Address. Note Email is Valid for One (1) Hour.`,
+                         button: {
+                             color: '#33b5e5',
+                             text: 'Verify Your Email',
+                             link: verifyUrl
+                         },
+                     },
+                     outro: `
+                         If you cannot click the reset button, copy and paste the url here in your browser ${verifyUrl}
+ 
+                         If you did not SignUp to SuperGig, please ignore this email and report.
+                     `
+                 },
+             };
+ 
+             const emailTemplate = mailGenerator.generate(emailContent)
+             const emailText = mailGenerator.generatePlaintext(emailContent)
+             
+             await sendEmail({
+                 to: user.email,
+                 subject: 'SuperGig Verify Your Email',
+                 text: emailTemplate
+             })
+ 
+             return res.status(200).json({success: true, data: `Verification Email Sent to ${email}`})
+         } catch (error) {
+             console.log('ERROR SENDING VERIFY EMAIL', error)
+             return res.status(500).json({ success: false, data: 'Email could not be sent'})
+         }
+         
+         //sendToken(user, 201, res)
+         //res.status(200).json({success: true, data: `Signup Successful Please Verify email sent to ${email}`})
+     } catch (error) {
+         console.log('ERROR REGISTERING USER', error)
+         res.status(500).json({ success: false, data: 'Could Not Regiater User'})
+     }
+ }
+ */
 
-export async function register (req, res, next){
-    const { email, username, password, referredBy } = req.body
-    console.log( email, username,password)
+ export async function register(req, res, next) {
+    const { email, username, password, referredBy } = req.body;
 
-    if(!email || !password || !username ){
-        return res.status(400).json({ success: false, data: 'please provide all required fields'})
+    if (!email || !password || !username) {
+        return res.status(400).json({ success: false, data: 'Please provide all required fields' });
     }
 
     try {
         const existingEmail = await UserModel.findOne({ email });
-        if(existingEmail){
-            return res.status(400).json({ success: false, data: 'Email Alreay exists. Please use another email'})
+        if (existingEmail) {
+            return res.status(400).json({ success: false, data: 'Email already exists. Please use another email' });
         }
 
-        const user = await UserModel.create({
-            username, email, password
-        })
-        console.log('USER CREATED')
+        const user = await UserModel.create({ username, email, password });
+        console.log('USER CREATED');
 
-        const referralLink = `${process.env.CLIENT_URL}/register?ref=${user._id}`
-        user.referralLink = referralLink
-        await user.save()
+        const referralLink = `${process.env.CLIENT_URL}/register?ref=${user._id}`;
+        user.referralLink = referralLink;
+        await user.save();
 
-        if(referredBy){
-            const referrer = await UserModel.findById({ _id: referredBy })
-            if(referrer){
-                referrer.referrals.push(user._id)
+        if (referredBy) {
+            const referrer = await UserModel.findById(referredBy);
+            if (referrer) {
+                referrer.referrals.push(user._id);
+                await referrer.save();
+            } else {
+                console.log('REFERRER NOT FOUND');
             }
-            await referrer.save()
-            user.referredBy = referrer._id
-            await user.save()    
+            user.referredBy = referrer._id;
+            await user.save();
         }
-        
 
         const token = await new TokenModel({
             userId: user._id,
             token: crypto.randomBytes(32).toString('hex')
-        }).save()
+        }).save();
 
-        const verifyUrl = `${process.env.MAIL_WEBSITE_LINK}/${user._id}/verify/${token.token}`
-
-        try {
-            // send mail
-            const emailContent = {
-                body: {
-                    intro: 'SIGNUP SUCCESSFUL, PLEASE VERIFY EMAIL',
-                    action: {
-                        instructions: `You Have Successfull Signup to SuperGig, Please Click on the Button Below to verify your Email Address. Note Email is Valid for One (1) Hour.`,
-                        button: {
-                            color: '#33b5e5',
-                            text: 'Verify Your Email',
-                            link: verifyUrl
-                        },
-                    },
-                    outro: `
-                        If you cannot click the reset button, copy and paste the url here in your browser ${verifyUrl}
-
-                        If you did not SignUp to SuperGig, please ignore this email and report.
-                    `
-                },
-            };
-
-            const emailTemplate = mailGenerator.generate(emailContent)
-            const emailText = mailGenerator.generatePlaintext(emailContent)
-            
-            await sendEmail({
-                to: user.email,
-                subject: 'SuperGig Verify Your Email',
-                text: emailTemplate
-            })
-
-            return res.status(200).json({success: true, data: `Verification Email Sent to ${email}`})
-        } catch (error) {
-            console.log('ERROR SENDING VERIFY EMAIL', error)
-            return res.status(500).json({ success: false, data: 'Email could not be sent'})
-        }
+        const verifyUrl = `${process.env.MAIL_WEBSITE_LINK}/${user._id}/verify/${token.token}`;
         
-        //sendToken(user, 201, res)
-        //res.status(200).json({success: true, data: `Signup Successful Please Verify email sent to ${email}`})
+        try {
+            await registerMail({
+                username: user.username,
+                userEmail: user.email,
+                subject: 'SIGNUP SUCCESSFUL',
+                intro: 'PLEASE VERIFY EMAIL',
+                instructions: 'You Have Successfull Signup to SuperGig, Please Click on the Button Below to verify your Email Address. Note Email is Valid for One (1) Hour.',
+                outro: `
+                If you cannot click the reset button, copy and paste the url here in your browser ${verifyUrl}
+                  \n  
+                If you did not SignUp to SuperGig, please ignore this email and report.
+                `,
+                verifyUrl: verifyUrl,
+                text: 'Verify Email',
+            });
+
+            return res.status(200).json({ success: true, data: `Verification Email Sent to ${email}` });
+        } catch (error) {
+            console.log('ERROR SENDING VERIFY EMAIL', error);
+            return res.status(500).json({ success: false, data: 'Email could not be sent' });
+        }
     } catch (error) {
-        console.log('ERROR REGISTERING USER', error)
-        res.status(500).json({ success: false, data: 'Could Not Regiater User'})
+        console.log('ERROR REGISTERING USER', error);
+        res.status(500).json({ success: false, data: 'Could Not Register User' });
     }
 }
 
