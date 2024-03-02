@@ -1,0 +1,26 @@
+.availableTask .t-1 .link{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+@media screen and (max-width: 450px) {
+    .availableTask thead th{
+        font-size: 14px;
+    }
+
+    .availableTask thead th:last-child,
+    .availableTask thead th:nth-child(4){
+        display: none;
+    }
+
+    .availableTask tbody td,
+    .availableTask .t-1 .link{
+        font-size: 15px;
+    }
+
+    .availableTask tbody td:last-child,
+    .availableTask tbody td:nth-child(4){
+        display: none;
+    }
+}

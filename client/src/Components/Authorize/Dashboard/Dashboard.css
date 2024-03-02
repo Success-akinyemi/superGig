@@ -1,0 +1,304 @@
+.dashboard{
+    width: 100%;
+
+}
+
+.dashboard .middle{
+    width: 100%;
+    background: var(--primary-color);
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.dashboard .cards{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.dashboard .cards .card{
+    flex: 1;
+    border: 2px solid var(--main-color);
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.dashboard .cards .card h2{
+    font-weight: 400;
+    font-size: 20px;
+}
+
+.dashboard .cards .card span{
+    font-size: 29px;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.dashboard .middle hr{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid var(--second-color);
+}
+
+.dashboard .middle .more-actions{
+    display: flex;
+    align-items: center;
+}
+
+.dashboard .middle .more-actions span{
+    padding: 5px 8px;
+    font-size: 14px;
+    border-radius: 20px;
+    border: 3px solid var(--main-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dashboard .middle .more-actions hr{
+    margin-left: 1px;
+    width: 30px;
+    transform: rotate(90deg);
+    border-color: var(--main-color);
+}
+
+.dashboard .middle .more-actions .actions{
+    display: flex;
+    margin-left: 30px;
+    gap: 20px;
+}
+
+.dashboard .middle .more-actions .actions span{
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 20px;
+    border: 1px solid var(--main-color);
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 5px;
+    align-items: center;
+    font-weight: 600;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.4s ease-in-out;
+}
+
+.dashboard .middle .more-actions .actions span:hover{
+    background: var(--main-color);
+    color: white;
+}
+
+.dashboard .banner{
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.dashboard .banner .banner-display{
+    width: 60%;
+    min-height: 200px;
+    background: var(--primary-color);
+}
+
+.dashboard .table{
+    width: 100%;
+    display: flex;
+    align-items: start;
+    margin-top: 40px;
+    margin-bottom: 80px;
+    gap: 20px;
+}
+
+.dashboard .table span{
+    color: orange;
+}
+
+.dashboard .table hr,
+.dashboard .table .sub-table hr{
+    margin-top: 30px;
+    margin-bottom: 10px;
+    border: 1px solid #3232322b;
+}
+
+.dashboard .table .main-table{
+    flex: 7.5;
+    background: var(--primary-color);
+    border-radius: 20px;
+    height: 100%;
+    width: 90%;
+    padding: 20px;
+}
+
+.dashboard .table .main-table table{
+    width: 100%;
+    text-align: center;
+}
+
+.dashboard .table .incoming{
+    color: green;
+}
+
+.dashboard .table .outgoing{
+    color: red;
+}
+
+.dashboard .table .recieve,
+.dashboard .table .debited{
+
+    border-radius: 10px;
+}
+
+.dashboard .table .recieve{
+    color: green;
+    background: rgba(2, 192, 2, 0.341);
+}
+
+.dashboard .table .debited{
+    color: red;
+    background: rgba(252, 3, 3, 0.341);
+}
+
+.dashboard .table .main-table table tbody td{
+    height: 2.8rem;
+    border-bottom:  1px solid #3232322b;
+}
+
+.dashboard .table .main-table table tbody tr:last-child td{
+    border: none;
+}
+
+.dashboard .table .sub-table{
+    flex: 2.5;
+    background: var(--primary-color);
+    border-radius: 20px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard .table .sub-table span{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.dashboard .table .sub-table span .link{
+    color: #000;
+    font-weight: 600;
+}
+
+.dashboard .table .sub-table .tasks span{
+    color: black;
+}
+
+.dashboard .table .sub-table .tasks .task{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.dashboard .table .sub-table .tasks .task span,
+.dashboard .table .sub-table .tasks .task span:nth-child(2){
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    gap: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .dashboard .cards{
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .dashboard .cards .card{
+        width: 100%;
+    }
+
+    .dashboard .middle .more-actions{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .dashboard .middle .more-actions hr{
+        display: none;
+    }
+
+    .dashboard .middle .more-actions .actions{
+        width: 100%;
+        margin-left: 0;
+    }
+
+    .dashboard .banner .banner-display{
+        width: 100%;
+    }
+
+    .dashboard .table{
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dashboard .table .sub-table{
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .dashboard .middle .more-actions .actions{
+        gap: 10px;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+
+    .dashboard .middle .more-actions span{
+        padding: 4px 6px;
+        font-size: 10px;
+        border-radius: 20px;
+        border: 3px solid var(--main-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .dashboard .middle .more-actions span .icon{
+        font-size: 20px;
+    }
+
+    .dashboard .table .main-table{
+        width: 100%;
+    }
+
+    .dashboard .table .recieve,
+    .dashboard .table .debited{
+
+        border-radius: 10px;
+    }
+
+    .dashboard .table .recieve{
+        color: green;
+        background: none;
+    }
+
+    .dashboard .table .debited{
+        color: red;
+        background: none;
+    }
+
+    .dashboard .table .main-table table tbody td:last-child,
+    .dashboard .table .main-table table tbody td:nth-child(4){
+        display: none;
+    }
+
+    .dashboard .table .sub-table{
+        width: 80%;
+    }
+}

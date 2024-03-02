@@ -1,0 +1,125 @@
+.invite{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.invite .top{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background: var(--primary-color);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.invite .top .linkCard{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-top: 30px;
+}
+
+.invite .top .linkCard input{
+    padding: 5px;
+    font-weight: 500;
+    font-size: 19px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+.invite .top .linkCard span{
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: var(--second-color);
+    cursor: pointer;
+    font-weight: 600;
+    padding: 10px 35px;
+    border-radius: 10px;
+    transition: al 300ms ease;
+}
+
+.invite .top .linkCard span:hover{
+    color: var(--primary-color);
+}
+
+.invite .body{
+    width: 100%;
+    background: var(--primary-color);
+    padding: 20px;
+    border-radius: 20px;
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+}
+
+.invite .body .infoTop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.invite .body .infoTop span{
+    font-weight: 600;
+}
+
+.invite .content{
+    width: 100%;
+    display: flex;
+}
+
+.invite .content ol{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.invite .content ol li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.invite .content ol .heading{
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+.invite .content ol .heading .title{
+    font-weight: 600;
+}
+
+.invite .content li .groupOne{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.invite .content li .groupTwo{
+    cursor: pointer;
+}
+
+.invite .content li .groupTwo .icon{
+    cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+    .invite{
+        width: 100%;
+    }
+
+    .invite .top .linkCard{
+        flex-direction: column;
+        width: 100%;
+        gap: 20px;
+    }   
+
+    .invite .top .linkCard input{
+        width: 100%;
+    }
+
+}

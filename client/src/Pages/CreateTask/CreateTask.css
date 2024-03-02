@@ -1,0 +1,62 @@
+.createTask{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+    background: var(--main-color-opacity);
+    position: relative;
+}
+
+.createTask .c-logo{
+    position: fixed;
+    left: 20px;
+    top: 20px;
+}
+
+.createTask .createTaskForm{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    background: var(--primary-color);
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.createTask .createTaskForm .inputGroup{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.createTask .createTaskForm .inputGroup label{
+    font-size: 22px;
+    margin-bottom: 10px;
+}
+
+.createTask .createTaskForm .inputGroup select{
+    padding: 5px;
+    background: transparent;
+    border-radius: 10px;
+    font-size: 18px;
+    border: 2px solid var(--second-color);
+}
+
+.createTask .createTaskForm .inputGroup select option{
+    background: var(--main-color-opacity);
+    border: none;
+    font-size: 18px;
+}
+
+@media screen and (max-width: 768px) {
+    .createTask .createTaskForm{
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .createTask .createTaskForm{
+        width: 70%;
+    }
+}

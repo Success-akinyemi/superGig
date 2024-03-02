@@ -1,0 +1,135 @@
+.sidebar{
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 40px;
+    padding-bottom: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    position: fixed;
+    background: white;
+    left: 0;
+    top: 0;
+
+}
+
+.sidebar .closeBtn{
+    display: none;
+}
+
+.sidebar .top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.sidebar .top h4{
+    font-weight: 900;
+}
+
+.sidebar .top span{
+    margin-top: -4px;
+    font-size: 14px;
+}
+
+.sidebar .menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 85%;
+    margin-top: 40px;
+}
+
+.sidebar .menu .link{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    gap: 10px;
+    font-size: 19px;
+    transition: .4s ease-in-out;
+    width: 100%;
+    padding: 7px;
+}
+
+.sidebar .menu .link:hover,
+.sidebar .menu .link.active{
+    background: var(--main-color-opacity);
+    border-radius: 10px;
+}
+
+.sidebar .create-task{
+    margin-top: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background: var(--second-color);
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    transition: .4s ease-in-out;
+}
+
+.sidebar .create-task:hover{
+    background: var(--main-color);
+}
+
+.sidebar .bottom{
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: black;
+}
+
+.sidebar .bottom span{
+    display: flex;    
+    margin-bottom: 10px;
+    gap: 5px;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .sidebar{
+        min-height: 100vh;
+        width: 60vw;
+    }
+
+    .sidebar .closeBtn{
+        display: block;
+        font-size: 40px;
+        margin-left: auto;
+        cursor: pointer;
+    }
+
+    .sidebar .top h4{
+        font-size: 20px;
+    }
+
+    .sidebar .top span{
+        font-size: 17px;
+    }
+
+    .sidebar .menu .link{
+        font-size: 23px;
+    }
+
+    .sidebar .bottom{
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .sidebar{
+        width: 85vw;
+    }
+}

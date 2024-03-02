@@ -1,0 +1,54 @@
+.withdrawBonus{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.withdrawBonus .title{
+    font-size: 19px;
+    font-weight: 400;
+}
+
+.withdrawBonus span{
+    font-weight: 600;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+}
+
+.withdrawBonus .bonusForm{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.withdrawBonus .bonusForm input{
+    width: 100%;
+    padding: 5px;
+    font-size: 18px;
+    outline: none;
+    border-radius: 4px;
+}
+
+.withdrawBonus .bonusForm input:focus{
+    border: 1px solid var(--second-color);
+}
+
+.withdrawBonus .bonusForm button{
+    width: 100%;
+    padding: 10px;
+    margin-top: 30px;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--primary-color);
+    background: var(--main-color);
+    transition: all 300ms ease;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.withdrawBonus .bonusForm button:hover{
+    background: var(--second-color);
+}

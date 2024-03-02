@@ -1,0 +1,205 @@
+.home{
+    display: flex;
+    max-width: 100vw;
+    
+    position: relative;
+}
+
+/**  POPUP COMPONENT */
+
+
+  /* POPUP COMPONENT */
+  
+  .popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 350px;
+    height: auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    transition: top 0.3s ease-in-out;
+    z-index: 9999;
+  }
+  
+  .popup.active {
+    top: 50%;
+  }
+
+  .popupBig{
+    width: 50%;
+  }
+  
+  .popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 9998;
+  }
+  
+  .popup-content {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .inner{
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+  }
+  
+  .popup-close:hover {
+    opacity: 0.8;
+  }
+
+/**  END POPUP COMPONENT */
+
+.home .left{
+    flex: 1.6;
+    height: 100%;
+}
+
+.home .right{
+    flex: 8.4;
+    background: var(--main-color-opacity);
+}
+
+.home .top{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.home .top .greetings{
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.home .top .notifications{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.home .top .notifications .bell{
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.home .top .notifications span{
+  padding: 4px 15px;
+  font-size: 19px;
+  border-radius: 20px;
+  border: 2px solid var(--main-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.home .right .container{
+  margin-top: 50px;
+  padding-top: 25px;
+  padding-left: 15px;
+  padding-right: 30px;
+}
+
+.home .right .menuBtn{
+  display: none;
+}
+
+.home .paybills-options{
+  display: flex;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  width: 100%;
+  font-size: 19px;
+  gap: 20px;
+}
+
+.home .paybills-options span{
+  width: 100%;
+  padding: 10px ;
+  text-align: center;
+  background: var(--second-color);
+  color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 15px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .home{
+    max-width: 100%;
+  }
+
+  .home .right{
+    width: 100%;
+  }
+
+  .home .left{
+    position: fixed;
+    left: -100%;
+    width: 80vw;
+    z-index: 10;
+    display: none;
+    animation: showMenu 600ms ease forwards;
+  }
+
+  @keyframes showMenu {
+    to{
+        left: 5px;
+    }
+  }
+
+  .home .left.menu-open{
+    display: block;
+  }
+
+  .home .right .menuBtn{
+    display: block;
+    margin-left: 10px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  
+  .home .right .menuBtn .menuIcon{
+    font-size: 40px;
+    font-weight: 600;
+  }
+
+  .home .right .container{
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home .left{
+    width: 95vw;
+  }
+
+  .popupBig{
+    width: 80%;
+  }
+}

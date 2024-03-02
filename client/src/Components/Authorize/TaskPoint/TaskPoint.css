@@ -1,0 +1,30 @@
+.taskPoint{
+    min-height: 100vh;
+    width: 100%;
+}
+
+.taskPoint .title{
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.taskPoint .table-bg .top .category span{
+    font-size: 15px;
+}
+
+.taskPoint .active{
+    color: var(--main-color);
+    border-bottom: 2px solid var(--main-color);
+}
+
+@media screen and (max-width: 768px){
+    .taskPoint .table-bg{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 450px){
+    .taskPoint .table-bg{
+        width: 100%;
+    }
+}

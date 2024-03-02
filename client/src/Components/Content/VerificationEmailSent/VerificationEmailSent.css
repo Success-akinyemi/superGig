@@ -1,0 +1,59 @@
+.v-registration{
+    background: url('../../../assets/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;   
+   }
+   
+.v-container{
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       min-height: 100vh;
+   }
+   
+.v-box{
+       display: flex;
+       flex-direction: row;
+       position: relative;
+       padding: 20px 20px 30px 20px;
+       height: 420px;
+       width: 350px;
+       background-color: rgba(255, 220, 220, 0.4);
+       border-radius: 30px;
+       -webkit-backdrop-filter: blur(15px);
+       backdrop-filter: blur(15px);
+       border: 3px solid rgba(255, 255, 255, 0.2);
+       overflow: hidden;
+   }
+
+.box-verifyEmail{
+    position: absolute;
+    width: 85%;
+    left: 27px;
+    transition: .4s ease-in-out;
+}
+
+.box-verifyEmail .top-header{
+    text-align: center;
+    margin: 30px 0;
+}
+
+.box-verifyEmail .top-header h3{
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: rgb(6, 187, 6);
+}
+
+.box-verifyEmail .input-group{
+    width: 100%;
+}
+
+.box-verifyEmail .input-group p{
+    width: 100%;
+    text-align: center;
+    color: var(--second-color);
+    font-weight: 500;
+}
