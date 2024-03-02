@@ -189,8 +189,8 @@
     width: 100%;
     max-width: 100%;
     overflow-x: hidden;
-    padding-left: 30px;
-    padding-right: 30px;
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 
@@ -201,5 +201,11 @@
 
   .popupBig{
     width: 80%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .home .top .notifications span{
+    display: none;
   }
 }

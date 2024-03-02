@@ -1,9 +1,13 @@
+import Navbar from '../../Components/LandingPage/Navbar/Navbar'
+import Hero from '../../Components/LandingPage/Hero/Hero'
+
 import './LandingPage.css'
 
 function LandingPage() {
   return (
-    <div>
-        LandingPage
+    <div className='landingPage'>
+        <Navbar /> 
+        <Hero />
     </div>
   )
 }

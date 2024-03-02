@@ -8,8 +8,10 @@ import { addSocialMediaAccount, updateUser, uploadBankInfo } from '../../helpers
 import { selectAccountPlatform } from '../../data/createTask';
 import toast from 'react-hot-toast';
 import { bankCode } from '../../data/bankCode';
+import { useNavigate } from 'react-router-dom';
 
 function Profile() {
+    const navigate = useNavigate()
     const [formData, setFormData] = useState({});
     const [menuOpen, setMenuOpen] = useState(false);
     const [greeting, setGreeting] = useState('')
@@ -179,6 +181,11 @@ function Profile() {
             }
         }
 
+        const handleLogout = () => {
+            localStorage.clear('authToken')
+            navigate('/')
+          }
+
   return (
     <div className='profile'>
         <div className={`left ${menuOpen ? 'menu-open' : ''}`}>
@@ -206,6 +213,9 @@ function Profile() {
             </div>
           </div>
             <div className="container">
+                <div className="logout">
+                    <span className='logoutBtn' onClick={handleLogout}>Logout</span>
+                </div>
                 <div className="infoCard">
                 <h2>Update Account</h2>
                 <p>To complete task update accounts here</p>

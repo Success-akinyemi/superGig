@@ -1,0 +1,90 @@
+.hero{
+    width: 100%;
+    height: 100vh;
+    background: var(--home-bg);
+    margin-top: 70px;
+    display: flex;
+
+}
+
+.hero .left,
+.hero .right{
+    flex: 1;
+}
+
+.hero .top{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.hero .top .contentOption{
+    padding: 10px 20px;
+    background: var(--home-btn);
+    color: var(--primary-color);
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: all 300ms ease;
+}
+
+.hero .top .contentOption.active{
+    background: var(--primary-color);
+    color: var(--home-btn);
+}
+
+.hero .left{
+    margin-top: 50px;
+}
+
+.hero .left .contentOne{
+    display: flex;
+    flex-direction: column;
+}
+
+.hero .left .text{
+    font-size: 50px;
+}
+
+.hero .left .text.moreText{
+    color: var(--home-btn);
+}
+.hero .left .contentOne p{
+    margin-top: 30px;
+    font-weight: 500;
+    color: var(--main-colo);
+}
+
+.hero .left .contentOne .btnCard,
+.hero .left .contentTwo .btnCard{
+    margin-top: 50px;
+    display: flex;
+    text-align: center;
+}
+
+.hero .left .contentOne .btnCard .btn,
+.hero .left .contentTwo .btnCard .btn{
+    padding: 10px 20px;
+    background: var(--home-btn);
+    border-radius: 20px;
+    color: var(--primary-color);
+    font-weight: 500;
+}
+
+.hero .left .contentTwo h1{
+    font-size: 45px;
+}
+
+.hero .left .contentTwo p{
+    margin-top: 50px;
+    font-size: 19px;
+    color: var(--main-color);
+}
+
+@media screen and (max-width: 768px) {
+    .hero{
+        flex-direction: column;
+    }
+}

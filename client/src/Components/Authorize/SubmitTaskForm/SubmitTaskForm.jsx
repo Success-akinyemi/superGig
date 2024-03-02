@@ -89,7 +89,7 @@ function SubmitTaskForm({userProfile, taskId, userId}) {
           />
           {
             formData.proofImg && (
-              <img className='screenshootImg' src={TestImg} />
+              <img className='screenshootImg' src={formData.proofImg} />
             )
           }
 
