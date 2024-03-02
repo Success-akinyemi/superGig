@@ -4,6 +4,7 @@ import express from 'express'
 import router from './routes/auth.js'
 import privateRouter from './routes/privateRoute.js'
 import errorHandler from './middleware/error.js'
+import schedule  from 'node-schedule'
 
 const app = express()
 
@@ -24,10 +25,26 @@ app.get('/', (req, res) => {
 
 //Import DB
 import './config/db.js'
+import UserModel from './models/User.js';
 
 app.use('/api/auth', router)
 app.use('/api', privateRouter)
 
+//Scheduler to run every 10 mintues
+const rule = new schedule.RecurrenceRule();
+rule.minute = new schedule.Range(0, 59, 10); // This task runs every 10 minutes
+
+// Schedule the task
+const task = schedule.scheduleJob(rule, async () => {
+
+  try {
+    const users = await UserModel.find()
+
+    console.log('Total number of users.', users.length);
+  } catch (error) {
+    console.error('Error get all users:', error);
+  }
+});
 
 //Error Handler Last piece of middleware
 app.use(errorHandler)
