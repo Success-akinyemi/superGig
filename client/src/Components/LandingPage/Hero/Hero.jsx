@@ -2,6 +2,7 @@ import { useState } from 'react'
 import './Hero.css'
 import { Cursor, useTypewriter } from 'react-simple-typewriter'
 import { Link } from 'react-router-dom';
+import HeroImg from '../../../assets/bgImg.png'
 
 function Hero() {
     const [ content, setContent ] = useState('business')
@@ -52,7 +53,9 @@ function Hero() {
             }
         </div>
 
-        <div className="right"></div>
+        <div className="right">
+            <img src={HeroImg} alt='hero' />
+        </div>
     </div>
   )
 }

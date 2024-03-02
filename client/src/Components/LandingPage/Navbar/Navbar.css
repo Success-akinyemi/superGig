@@ -11,6 +11,11 @@
     justify-content: space-between;
 }
 
+.navbar .logo img{
+    width: 180px;
+    height: 100%;
+}
+
 .navbar .registerBtn{
     padding: 10px 20px;
     background: var(--main-color);
@@ -24,3 +29,9 @@
     background: var(--second-color);
 }
 
+@media screen and (max-width: 500px) {
+    .navbar .logo img{
+        width: 120px;
+        height: 80%;
+    }
+}

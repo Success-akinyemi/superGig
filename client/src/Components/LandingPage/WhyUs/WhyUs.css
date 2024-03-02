@@ -1,0 +1,62 @@
+.whyUs{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--home-bg-2);
+}
+
+.whyUs h2{
+    margin-top: 30px;
+    font-size: 32px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.whyUs p{
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.whyUs .content{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 70px;
+    flex-direction: row;
+}
+
+.whyUs .content .card{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+    padding: 20px;
+    background: var(--primary-color);
+}
+
+.whyUs .card img{
+    width: 100px;
+}
+
+.whyUs .card h2{
+    width: 100%;
+    text-align: left;
+    color: var(--home-btn);
+    font-weight: 500;
+}
+
+.whyUs .card p{
+    width: 100%;
+    text-align: left;
+}
+
+@media screen and (max-width: 768px) {
+    .whyUs .content .card{
+        width: 100%;
+    }
+}

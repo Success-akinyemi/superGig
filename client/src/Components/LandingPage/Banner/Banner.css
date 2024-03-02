@@ -1,0 +1,53 @@
+.banner{
+    width: 100%;
+    background: var(--home-bg-2);
+    padding-bottom: 70px;
+}
+
+.banner .card{
+    background: var(--home-btn);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px;
+    border-radius: 45px;
+    margin-top: 80px;
+}
+
+.banner .text{
+    color: var(--primary-color);
+    font-size: 19px;
+    width: 600px;
+}
+
+.banner .btn{
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: var(--home-btn);
+    background: var(--primary-color);
+    border: 3px solid var(--primary-color);
+    transition: all 300m ease;
+    text-align: center;
+    cursor: pointer;
+}
+
+.banner .btn:hover{
+    color: var(--primary-color);
+    background: var(--home-btn);
+}
+
+@media screen and (max-width: 768px) {
+    .banner .text{
+        font-size: 15px;
+    }
+
+    .banner .btn{
+        padding: 5px 10px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .banner .text{
+        font-size: 12px;
+    }
+}
