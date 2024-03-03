@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './WithdrawEarning.css'
 import { withdrawEarning } from '../../../helpers/helpers'
 import toast from 'react-hot-toast'
@@ -6,14 +6,23 @@ import toast from 'react-hot-toast'
 function WithdrawEarning({apiData}) {
   const [ earningAmount, setEarningAmount ] = useState()
   const [ loading, setLoading ] = useState(false)
+  const [transactionFee, setTransactionFee] = useState(0)
+
+
+  useEffect(() => {
+    if(earningAmount){
+      const fee = (3 * parseFloat(earningAmount)) / 100
+      setTransactionFee((parseFloat(earningAmount) + fee).toFixed(2))
+    }
+  },[earningAmount])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     try {
-      if(apiData?.earningWallet < 500){
+      if(apiData?.earningWallet < transactionFee){
         toast.error('Insuffient Balance')
       }
-      if(apiData?.earningWallet < earningAmount){
+      if(apiData?.earningWallet < transactionFee){
         toast.error('Insuffient Balance')
       }
       setLoading(true)
@@ -40,6 +49,7 @@ function WithdrawEarning({apiData}) {
               'Minimuin amount is 500'
             }
           </button>
+          <p className='fee'>Transaction fee (3%): {transactionFee && (<span>{transactionFee}</span>)}</p>
         </form>
     </div>
   )

@@ -18,6 +18,7 @@ function VerificationEmailSent() {
                   <div className="input-group">
                         <p>{msg}</p>
                   </div>
+                  <small>Check Spam box for mail also</small>
               </form>
             </div>
           </div>

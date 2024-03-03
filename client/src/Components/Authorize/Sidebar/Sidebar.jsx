@@ -60,7 +60,7 @@ function Sidebar({ setSelectedMenuItem, onCloseClick, homeMenu }) {
               <Link className={`link ${ sidebarMenuItem === 'taskPoint' ? 'active' : ''}`} onClick={() => handleMenuItemClick('taskPoint')}><ContentPasteIcon /> Task Point</Link>
               <Link className={`link ${ sidebarMenuItem === 'wallet' ? 'active' : ''}`} onClick={() => handleMenuItemClick('wallet')}><AccountBalanceWalletIcon /> Wallet</Link>
               <Link className={`link ${ sidebarMenuItem === 'invite' ? 'active' : ''}`} onClick={() => handleMenuItemClick('invite')}><PeopleAltOutlinedIcon /> Invite</Link>
-              <Link className={`link ${ sidebarMenuItem === 'ticket' ? 'active' : ''}`} onClick={() => handleMenuItemClick('ticket')}><LiveHelpIcon /> Support Ticket</Link>
+              <Link className={`link ${ sidebarMenuItem === 'support' ? 'active' : ''}`} onClick={() => handleMenuItemClick('support')}><LiveHelpIcon /> Support Ticket</Link>
               </>
             ) : (
               <>

@@ -12,6 +12,7 @@ import AccountFunding from '../../Components/Helpers/AccountFunding/AccountFundi
 import CableTvComponent from '../../Components/Helpers/CableTvComponent/CableTvComponent'
 import ElectricityComponent from '../../Components/Helpers/ElectricityComponent/ElectricityComponent'
 import Invite from '../../Components/Authorize/Invite/Invite'
+import SupportTicket from '../../Components/Authorize/SupportTicket/SupportTicket'
 
 
 function Home() {
@@ -51,6 +52,8 @@ function Home() {
         return <Wallet />
       case 'invite':
         return <Invite />
+      case 'support':
+        return <SupportTicket />
 
       default: 
         return <Dashboard />

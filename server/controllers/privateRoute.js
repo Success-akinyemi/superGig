@@ -513,14 +513,16 @@ export async function withdrawEarnings(req, res){
     try {
         const user = await UserModel.findById({ _id: userId })
         const userBankAccountDetails = await BankAccountDetailModel.findOne({ userId: userId })
+        const fee = (3 * earningAmount) / 100
+        const totalAmount = Math.round(fee + earningAmount)
         if(!userBankAccountDetails){
             return res.status(400).json({ success: false, data: 'Please Add your account Details' })
         }
-        if(user.earningWallet < earningAmount){
+        if(user.earningWallet < totalAmount){
             return res.status(400).json({ success: false, data: 'Insuficient Wallent Balance'})
         }
 
-        user.earningWallet -= earningAmount
+        user.earningWallet -= totalAmount
         await user.save()
 
         const transaction = await TransactionModel.create({
@@ -540,7 +542,7 @@ export async function withdrawEarnings(req, res){
             amount: earningAmount
         })
 
-        const expense = await MasterIncomeModel
+        const expense = await MasterIncomeModel()
         expense.totalExpense += earningAmount
         await expense.save()
 
