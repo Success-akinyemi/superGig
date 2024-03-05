@@ -13,6 +13,7 @@ import UserModel from "../models/User.js"
 import YoutubeModel from "../models/Youtube.js"
 import { updateUser } from "./auth.js"
 import axios from 'axios'
+import { registerMail } from "./mailer.js"
 
 /**Add social media account */
 export async function addUserSocialMedia(req, res){
@@ -200,8 +201,6 @@ export async function payWithPaystack(req, res){
    
      res.end()
    }
- 
-
 
 /**TASK APIs */
 //create job
@@ -238,6 +237,21 @@ export async function createTask(req, res){
         }
 
         const transaction = await TransactionModel.create(transactionData)
+
+        //temporary send email to admin for each job created
+            await registerMail({
+                username: 'Hi success',
+                userEmail: 'supergig50@gmail.com',
+                subject: 'New job Created',
+                intro: `job created by: ${user.username}`,
+                instructions: 'Vist site to see more',
+                outro: `
+                    price: ${amount}, platForm: ${platform}, Workers needed: ${numberOfWorkers}, Task: ${task}
+                `,
+                verifyUrl: 'https://supergig.onrender.com',
+                text: 'View Job',
+            });
+
 
         res.status(201).json({ success: true, data: 'Task Created Successfuly'})
     } catch (error) {
@@ -547,6 +561,20 @@ export async function withdrawEarnings(req, res){
         await expense.save()
 
         console.log('Expense CREATED', expense)
+
+                //temporary send email to admin for each payment order created
+                await registerMail({
+                    username: 'Hi success',
+                    userEmail: 'supergig50@gmail.com',
+                    subject: 'New payment order Created',
+                    intro: `payment order created by: ${user.username}`,
+                    instructions: 'Vist site to see more',
+                    outro: `
+                        Amount Requested: ${earningAmount}, account Name: ${userBankAccountDetails.bankName}, Account Number: ${userBankAccountDetails.accountNumber}, Account Name: ${userBankAccountDetails.accountName}
+                    `,
+                    verifyUrl: 'https://supergig.onrender.com',
+                    text: 'View Job',
+                });
 
         res.status(201).json({success: true, data: 'Withdrawal successfull, payments will be made shortly.'})
     } catch (error) {
