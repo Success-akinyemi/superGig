@@ -126,7 +126,7 @@ function Signup({isActive, referredBy}) {
 
       <div className="input-field">
         <input type={comfirmPasswordVisible ? 'text' : 'password'} id="regConfirmPassword" className="input-box" required value={comfirmPassword} onChange={(e) => setComfirmPassword(e.target.value)}/>
-        <label htmlFor="regPassword">Comfirm Password</label>
+        <label htmlFor="regPassword" id='ooo'>Retype Password</label>
         <div className="eye-area">
           <div className="eye-box" onClick={myRegComfirmPassword}>
           {comfirmPasswordVisible ? (

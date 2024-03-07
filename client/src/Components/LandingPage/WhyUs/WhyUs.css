@@ -22,7 +22,7 @@
 .whyUs .content{
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 60px;
     justify-content: center;
     margin-top: 70px;
     flex-direction: row;
@@ -32,11 +32,12 @@
     display: flex;
     flex-direction: column;
     width: 50%;
-    box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
-    -webkit-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
-    -moz-box-shadow: 0px 0px 10px 1px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 12px -1px rgba(0,0,0,0.75);
+    -webkit-box-shadow: 0px 0px 12px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 12px -1px rgba(0,0,0,0.75);
     padding: 20px;
     background: var(--primary-color);
+    border-radius: 20px;
 }
 
 .whyUs .card img{

@@ -15,7 +15,7 @@ function VerifyUser() {
                 const res = await verifyUser({ id, token})
 
                 if(res.data.success){
-                    navigate('/register')
+                    navigate('/register?login=true')
                 }
             } catch (error) {
                 

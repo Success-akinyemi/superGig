@@ -643,3 +643,5 @@ export async function getAllUserReferrees(req, res){
         res.status(500).json({ success: false, data: 'Could not get reerred Users'})
     }
 }
+
+//api to update job rejected by user flag freelancer

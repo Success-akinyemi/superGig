@@ -110,6 +110,17 @@ const UserSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    rejectedJobs: [{
+        taskId:{
+            type: String
+        },
+        taskType: {
+            type: String
+        },
+        date: {
+            type: String
+        }
+    }],
     referredBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'supergigUsers'

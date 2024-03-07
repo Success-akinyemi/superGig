@@ -1,5 +1,6 @@
 .registration{
- background: url('../../assets/bg.jpg');
+ /*background: url('../../assets/bg.jpg')*/
+ background: var(--home-btn);
  background-size: cover;
  background-position: center;
  background-repeat: no-repeat;
@@ -65,3 +66,12 @@
     transition: .4s ease-in-out;
 }
 
+.registration .logo{
+    width: 100px;
+    position: absolute;
+    top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
