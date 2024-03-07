@@ -20,9 +20,10 @@ function Sidebar({ setSelectedMenuItem, onCloseClick, homeMenu }) {
 
   const { apiData, isLoading, serverError } = useFetch();
 
-  const handleLogout = () => {
-    localStorage.clear('authToken')
+  const handleLogout = async () => {
+    await localStorage.removeItem('authToken')
     navigate('/')
+    window.location.reload()
   }
 
   const handleMenuItemClick = (menuItem) => {

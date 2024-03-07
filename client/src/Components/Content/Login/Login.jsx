@@ -52,8 +52,9 @@ function Login({ isActive }) {
           state: { resMsg: res?.data.data },
         });
       } else {
-        localStorage.setItem("authToken", res?.data.token);
+        await localStorage.setItem("authToken", res?.data.token);
         navigate("/home");
+        window.location.reload()
       }
     } catch (errorMsg) {
       console.log("ERROR REGISTEREING USER:", errorMsg);
