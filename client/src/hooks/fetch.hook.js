@@ -115,7 +115,7 @@ export function useFetchTransaction(query){
                     setTransactionData({ isLoadingTransaction: false, transactionData: null, transactionStatus: status, transactionServerError: null})
                 }
             } catch (error) {
-                console.log('COULF NOT FETCH DATA', error)
+                console.log('COULF NOT FETCH DATA Transactions', error)
                 setTransactionData({ isLoadingTransaction: false, transactionData: null, transactionStatus: null, transactionServerError: error})
             }
         };

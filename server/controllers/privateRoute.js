@@ -536,6 +536,10 @@ export async function withdrawEarnings(req, res){
             return res.status(400).json({ success: false, data: 'Insuficient Wallent Balance'})
         }
 
+        if(totalAmount < 500){
+            return res.status(400).json({ success: false, data: 'Minimium Withdrawal amount is 500'})
+        }
+
         user.earningWallet -= totalAmount
         await user.save()
 
