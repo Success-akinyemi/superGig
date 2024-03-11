@@ -33,12 +33,12 @@ export async function getAllPaymentOrder(req, res){
     console.log('HELLO', query)
     try {
         let paymentData
-        if (query.toLowerCase() === 'Paid'){
+        if (query.toLowerCase() === 'paid'){
             console.log('ME PAID')
             paymentData = await PaymentOrderModel.find({ status: 'Paid' })
             return res.status(200).json({ success: true, data: paymentData})
         }
-        if(query.toLowerCase() === 'Pending'){
+        if(query.toLowerCase() === 'pending'){
             console.log('ME PENDING')
             paymentData = await PaymentOrderModel.find({ status: 'Pending'})
             return res.status(200).json({ success: true, data: paymentData})
