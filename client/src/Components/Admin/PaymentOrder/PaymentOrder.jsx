@@ -4,7 +4,7 @@ import PendingPayment from '../Helpers/PendingPayment/PendingPayment'
 import './PaymentOrder.css'
 import { useState } from 'react'
 
-function PaymentOrder() {
+function PaymentOrder({setSelectedCard, setPaymentOrderId}) {
     const [option, setOption] = useState('all')
   return (
     <div className='paymentOrder'>
@@ -30,7 +30,7 @@ function PaymentOrder() {
         {
             option === 'pending' && (
                 <div className="card">
-                    <PendingPayment />    
+                    <PendingPayment setSelectedCard={setSelectedCard} setPaymentOrderId={setPaymentOrderId} />    
                 </div>
             )
         }

@@ -33,12 +33,15 @@ export async function getAllPaymentOrder(req, res){
     console.log('HELLO', query)
     try {
         let paymentData
-        if (query === 'Paid'){
+        if (query.toLowerCase() === 'Paid'){
+            console.log('ME PAID')
             paymentData = await PaymentOrderModel.find({ status: 'Paid' })
         }
-        if(query === 'Pending'){
+        if(query.toLowerCase() === 'Pending'){
+            console.log('ME PENDING')
             paymentData = await PaymentOrderModel.find({ status: 'Pending'})
         } else{
+            console.log('ME ALL')
             paymentData = await PaymentOrderModel.find()
 
         }
@@ -50,9 +53,26 @@ export async function getAllPaymentOrder(req, res){
     }
 }
 
+//get a payment orders
+export async function getAPaymentOrder(req, res){
+    const { id } = req.params
+    console.log('HELLO', id)
+    try {
+        const paymentData = await PaymentOrderModel.findById({ _id: id })
+        if(!paymentData){
+            return res.status(404).json({ success: false, data: 'Data not found'})
+        }
+        
+        res.status(200).json({ success: true, data: paymentData})
+    } catch (error) {
+        console.log('ERROR GETTING A PAYMENT ORDERS', error)
+        res.status(500).json({ success: false, data: 'Failed to get a payment order data'})
+    }
+}
+
 //confirm payment to freelancer
 export async function confirmPayment(req, res){
-    const { id } = req.params
+    const { id } = req.body
     try {
         const paymentOrder = await PaymentOrderModel.findById({ _id: id })
 

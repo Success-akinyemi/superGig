@@ -8,7 +8,7 @@ privateRouter.route('/makeAdmin').post(Protect, AdminProtect, controller.makeAdm
 privateRouter.route('/confirmPayment').post(Protect, AdminProtect, controller.confirmPayment); //cofirm payment order
 
 privateRouter.route('/getAllPaymentOrder/:query').get(Protect, AdminProtect, controller.getAllPaymentOrder); //get all payment order
-privateRouter.route('/getPaymentOrder').get(Protect, AdminProtect, controller.makeAdmin); //get all payment order
+privateRouter.route('/getAPaymentOrder/:id').get(Protect, AdminProtect, controller.getAPaymentOrder); //get all payment order
 
 
 

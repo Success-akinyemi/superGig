@@ -245,3 +245,32 @@ export function useFetchAllPaymentOrder(query){
 
     return data
 }
+
+/**Get a payment order */
+export function useFetchAPaymentOrder(query){
+    const [data, setData] = useState({ isLoading: true, apiData: null, status: null, serverError: null})
+
+    useEffect(() => {
+        const fetchData =  async () => {
+            try {
+                const { id } = !query ? await getUser() : '';
+                
+                console.log('QEE', query)
+                const { data, status} = !query ? await axios.get(`/api/admin/getAPaymentOrder/${query}`, {headers: {Authorization: `Bearer ${token}`}}) : await axios.get(`/api/admin/getAPaymentOrder/${query}`, {headers: {Authorization: `Bearer ${token}`}})
+                console.log('ALL PAYMENT DATA from Hooks>>>', data)
+
+                if(status === 200){
+                    setData({ isLoading: false, apiData: data, status: status, serverError: null})
+                } else{
+                    setData({ isLoading: false, apiData: null, status: status, serverError: null})
+                }
+            } catch (error) {
+                console.log('ERR', error)
+                setData({ isLoading: false, apiData: null, status: null, serverError: error})
+            }
+        };
+        fetchData()
+    }, [query])
+
+    return data
+}

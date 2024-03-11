@@ -4,10 +4,12 @@ import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import MenuIcon from '@mui/icons-material/Menu';
 import AdminSidebar from '../../Components/Authorize/AdminSidebar/AdminSidebar';
 import PaymentOrder from '../../Components/Admin/PaymentOrder/PaymentOrder';
+import ApprovePayment from '../../Components/Admin/Helpers/ApprovePayment/ApprovePayment';
 
 function Admin() {
   const [selectedCard, setSelectedCard] = useState(null)
   const [bill, setBill] = useState(null)
+  const [paymentOrderId, setPaymentOrderId] = useState()
   const [adminMenuItem, setAdminMenuItem] = useState(() => {
     const savedAdminMenuItem = localStorage.getItem('adminMenuItem');
     return savedAdminMenuItem || 'dashboard'
@@ -37,7 +39,7 @@ function Admin() {
       case 'dashboard':
         return (<div>HELLO</div>);
       case 'taskPoint':
-        return <PaymentOrder />
+        return <PaymentOrder setSelectedCard={setSelectedCard} setPaymentOrderId={setPaymentOrderId} />
       case 'wallet':
         return (<div>HELLO</div>)
       case 'invite':
@@ -53,10 +55,10 @@ function Admin() {
   //POPUP
   const renderPopupComponent = () => {
     switch(selectedCard) {
-      case 'airtime' :
+      case 'approvePayment' :
         return (
           <div>
-            airtime
+            <ApprovePayment paymentOrderId={paymentOrderId} />
           </div>
         );
       case 'data' :

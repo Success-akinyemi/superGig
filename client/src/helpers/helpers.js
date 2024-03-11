@@ -372,6 +372,32 @@ export async function withdrawEarning({earningAmount, userId}){
     }
 }
 
+export async function confirmPayment({id}){
+    try {
+        const res = await axios.post('/api/admin/confirmPayment', {id}, {headers: {Authorization: `Bearer ${token}`}} )
+        if(res?.data.success){
+            toast.success(res.data.data)
+            window.location.reload()
+        }
+    } catch (error) {
+        console.log('ERROR VERIFYING USER API', error)
+        if (error.response && error.response.data) {
+            const errorMsg = error.response.data.data;
+            const errorMsg2 = error.response.data.error;
+            console.log('MSG', errorMsg)
+            console.log('MSG2', errorMsg2)
+            if(errorMsg){
+                toast.error(errorMsg)
+            } else{
+                toast.error(errorMsg2)
+            }
+            return errorMsg;
+          } else {
+            return 'An error occurred during the request.';
+          }
+    }
+}
+
 
 export async function buyAirtime({networkCode,amount,userPhoneNumber,email}){
     try {
