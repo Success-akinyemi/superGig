@@ -3,9 +3,8 @@ import { useFetchAllPaymentOrder } from '../../../../hooks/fetch.hook'
 import '../styling.css'
 
 function AllPayment() {
-    const query = 'Paid'
-    const { apiData, isLoading } = useFetchAllPaymentOrder(query)
-    console.log('DTA', apiData?.data)
+    const { apiData, isLoading } = useFetchAllPaymentOrder()
+    //console.log('DTA', apiData?.data)
     const data = apiData?.data
   return (
     <div className="paymentCard">

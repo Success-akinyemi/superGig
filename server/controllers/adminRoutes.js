@@ -29,14 +29,14 @@ export async function makeAdmin(req, res){
 
 //get all payment orders
 export async function getAllPaymentOrder(req, res){
-    const { sort } = req.body
-    console.log('HELLO', sort)
+    const { query } = req.params
+    console.log('HELLO', query)
     try {
         let paymentData
-        if (sort === 'Paid'){
+        if (query === 'Paid'){
             paymentData = await PaymentOrderModel.find({ status: 'Paid' })
         }
-        if(sort === 'Pending'){
+        if(query === 'Pending'){
             paymentData = await PaymentOrderModel.find({ status: 'Pending'})
         } else{
             paymentData = await PaymentOrderModel.find()
