@@ -19,11 +19,7 @@ import { formatDistanceToNow } from 'date-fns'
 function Dashboard({setSelectedCard}) {
     const { apiData, isLoading, serverError } = useFetch();
     const userId = apiData?._id
-    let isLoadingTransaction, transactionData;
-
-    if (userId) {
-        ({ isLoadingTransaction, transactionData } = useFetchTransaction(userId));
-    }
+    const { isLoadingTransaction, transactionData } = useFetchTransaction(userId);
     console.log('transactionData', transactionData?.data)
     const data = transactionData?.data
 
