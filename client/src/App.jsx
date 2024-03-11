@@ -2,7 +2,7 @@ import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ForgotPassword from './Components/Content/ForgotPassword/ForgotPassword'
 import ResetPassword from './Components/Content/ResetPassword/ResetPassword'
-import { AuthorizeUser, ValidToken } from './auth/PrivateRoute'
+import { AdminUser, AuthorizeUser, ValidToken } from './auth/PrivateRoute'
 import Home from './Pages/Home/Home'
 import Registration from './Pages/Registration/Registration'
 import LandingPage from './Pages/LandingPage/LandingPage'
@@ -14,6 +14,7 @@ import ResetEmailSent from './Components/Content/ResetEmailSent/ResetEmailSent'
 import { Toaster } from 'react-hot-toast'
 import Profile from './Pages/Profile/Profile'
 import CompletedTask from './Pages/CompletedTask/CompletedTask'
+import Admin from './Pages/Admin/Admin'
 
 function App() {
 
@@ -34,6 +35,9 @@ function App() {
           <Route path="/createTask" element={<AuthorizeUser><ValidToken><CreateTask /></ValidToken></AuthorizeUser>}/>
           <Route path="/profile" element={<AuthorizeUser><ValidToken><Profile /></ValidToken></AuthorizeUser>}/>
           <Route path="/home" element={<AuthorizeUser><ValidToken><Home /></ValidToken></AuthorizeUser>}/>
+
+          <Route path="/supegig-a" element={<AuthorizeUser><ValidToken><AdminUser><Admin /></AdminUser></ValidToken></AuthorizeUser>}/>
+
           <Route path='/' element={<LandingPage />} />
         </Routes>
       </BrowserRouter>      

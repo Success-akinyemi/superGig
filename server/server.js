@@ -3,6 +3,7 @@ config();
 import express from 'express'
 import router from './routes/auth.js'
 import privateRouter from './routes/privateRoute.js'
+import adminRouter from './routes/adminRoute.js'
 import errorHandler from './middleware/error.js'
 import schedule  from 'node-schedule'
 
@@ -29,6 +30,8 @@ import UserModel from './models/User.js';
 
 app.use('/api/auth', router)
 app.use('/api', privateRouter)
+app.use('/api/admin', adminRouter)
+
 
 //Scheduler to run every 10 mintues
 const rule = new schedule.RecurrenceRule();

@@ -1,0 +1,136 @@
+.adminSidebar{
+    width: 250px;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 40px;
+    padding-bottom: 50px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+    position: fixed;
+    background: white;
+    left: 0;
+    top: 0;
+
+}
+
+.adminSidebar .closeBtn{
+    display: none;
+}
+
+.adminSidebar .top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.adminSidebar .top h4{
+    font-weight: 900;
+}
+
+.adminSidebar .top span{
+    margin-top: -4px;
+    font-size: 14px;
+}
+
+.adminSidebar .menu{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 85%;
+    margin-top: 40px;
+}
+
+.adminSidebar .menu .link{
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    gap: 10px;
+    font-size: 19px;
+    transition: .4s ease-in-out;
+    width: 100%;
+    padding: 7px;
+}
+
+.adminSidebar .menu .link:hover,
+.adminSidebar .menu .link.active{
+    background: var(--main-color-opacity);
+    border-radius: 10px;
+}
+
+.adminSidebar .create-task{
+    margin-top: 60px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    background: var(--second-color);
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    color: white;
+    transition: .4s ease-in-out;
+}
+
+.adminSidebar .create-task:hover{
+    background: var(--main-color);
+}
+
+.adminSidebar .bottom{
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    color: black;
+}
+
+.adminSidebar .bottom span{
+    display: flex;    
+    margin-bottom: 10px;
+    gap: 5px;
+    align-items: center;
+}
+
+@media screen and (max-width: 768px) {
+    .adminSidebar{
+        min-height: 100vh;
+        width: 60vw;
+        overflow-y: scroll;
+    }
+
+    .adminSidebar .closeBtn{
+        display: block;
+        font-size: 40px;
+        margin-left: auto;
+        cursor: pointer;
+    }
+
+    .adminSidebar .top h4{
+        font-size: 20px;
+    }
+
+    .adminSidebar .top span{
+        font-size: 17px;
+    }
+
+    .adminSidebar .menu .link{
+        font-size: 23px;
+    }
+
+    .adminSidebar .bottom{
+        gap: 10px;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .adminSidebar{
+        width: 85vw;
+    }
+}

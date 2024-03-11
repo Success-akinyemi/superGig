@@ -493,6 +493,9 @@ export async function withdrawBonusEarning(req, res){
         if(user.totalReferralEarnings < bonusAmount ){
             return res.status(400).json({ success: false, data: 'Insufficient Bonus Fund'})
         }
+        if(bonusAmount < 500){
+            return res.status(400).json({ success: false, data: 'Minimium amount is 500'})
+        }
 
         user.earningWallet += bonusAmount
         user.totalReferralEarnings -= bonusAmount
