@@ -106,7 +106,7 @@ export function useFetchTransaction(query){
                 const { id } = !query ? await getUser() : '';
 
 
-                const { data, status} = !query ? await axios.get(`/api/getTransactionData/${id}`, {headers: {Authorization: `Bearer ${token}`}}) : await axios.get(`/api/getTransactionData/${id}`,  {headers: {Authorization: `Bearer ${token}`}})
+                const { data, status} = !query ? await axios.get(`/api/getTransactionData/${query}`, {headers: {Authorization: `Bearer ${token}`}}) : await axios.get(`/api/getTransactionData/${query}`,  {headers: {Authorization: `Bearer ${token}`}})
                 //console.log('Transaction Data from Hooks>>>', data)
 
                 if(status === 200){

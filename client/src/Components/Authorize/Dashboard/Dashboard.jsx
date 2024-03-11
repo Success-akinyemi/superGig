@@ -14,13 +14,13 @@ import THRImg from '../../../assets/THR.png'
 import { topTask } from '../../../data/topTask';
 import { useFetch, useFetchTask, useFetchTransaction } from '../../../hooks/fetch.hook';
 import { formatDistanceToNow } from 'date-fns'
+import { useEffect, useState } from 'react';
 
 
 function Dashboard({setSelectedCard}) {
     const { apiData, isLoading, serverError } = useFetch();
     const userId = apiData?._id
     const { isLoadingTransaction, transactionData } = useFetchTransaction(userId);
-    console.log('transactionData', transactionData?.data)
     const data = transactionData?.data
 
     const { isLoadingTask, apiTaskData, taskServerError } = useFetchTask()
