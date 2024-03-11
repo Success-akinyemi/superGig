@@ -28,7 +28,7 @@ function ApprovePayment({paymentOrderId}) {
         <h2>Account: {data?.amount}</h2>
         <h2>Status: {data?.status}</h2>
 
-        <button onClick={handleConfirmPayment(data?._id)}>Approve Payment</button>
+        <button onClick={() => handleConfirmPayment(data?._id)}>Approve Payment</button>
     </div>
   )
 }

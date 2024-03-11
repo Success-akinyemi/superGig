@@ -26,7 +26,7 @@ function PendingPayment({setSelectedCard, setPaymentOrderId}) {
                         <>
                         <p className="p1">{item?.bankName}</p>
                         <p className="p2">{item?.amount}</p>
-                        <p className="p3" onClick={handleData(item?._id)}>{item?.status}</p>
+                        <p className="p3" onClick={() => handleData(item?._id)}>{item?.status}</p>
                         </>
                     ))
                 )
