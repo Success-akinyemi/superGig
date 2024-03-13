@@ -606,7 +606,7 @@ export async function getUserPaymentOrder(req, res){
 
 export async function getTransactionData(req, res){
     const { id } = req.params
-    console.log('Id', id)
+    console.log('Idm', id)
     try {
         const transactionData = await TransactionModel.find({ userId: id })
 

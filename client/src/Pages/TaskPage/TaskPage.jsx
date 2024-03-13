@@ -8,6 +8,7 @@ import SubmitTaskForm from '../../Components/Authorize/SubmitTaskForm/SubmitTask
 import MenuIcon from '@mui/icons-material/Menu';
 import Sidebar from '../../Components/Authorize/Sidebar/Sidebar';
 import toast from 'react-hot-toast';
+import Spinner from '../../Components/Helpers/Spinner/Spinner';
 
 function TaskPage() {
     const navigate = useNavigate()
@@ -155,20 +156,26 @@ function TaskPage() {
         </div>
 
         <div className="top">
-            <span className='greetings'>{greeting}, and Welcome back {apiData?.username}</span>
+            <span className='greetings'>Welcome back {apiData?.username}</span>
             <div className="notifications">
                 <NotificationsNoneIcon className='bell' />
                 <span>update</span>
             </div>
           </div>
             <div className="container">
-                <div className="card">
-                    <span>Platform: <p>{task?.platform}</p></span>
-                    <span>Task: <p>{task?.task}</p></span>
-                    <span>Platform: <p>{task?.platform}</p></span>
-                    <span>Complete rate: <p>{task?.completedRate}/{task?.numberOfWorkers}</p></span>
-                    <span>Status: <p>{task?.completedRate <= task?.numberOfWorkers ? 'Active' : 'Completed'}</p></span>
-                </div>
+              {
+                isLoadingTask ? (
+                  <Spinner />
+                ) : (
+                  <div className="card">
+                      <span>Platform: <p>{task?.platform}</p></span>
+                      <span>Task: <p>{task?.task}</p></span>
+                      <span>Platform: <p>{task?.platform}</p></span>
+                      <span>Complete rate: <p>{task?.completedRate}/{task?.numberOfWorkers}</p></span>
+                      <span>Status: <p>{task?.completedRate <= task?.numberOfWorkers ? 'Active' : 'Completed'}</p></span>
+                  </div>
+                )
+              }
 
                 <div className="error warning">
                     All jobs must be done properly before submitting <br />

@@ -24,7 +24,7 @@ function Dashboard({setSelectedCard}) {
     const data = transactionData?.data
 
     const { isLoadingTask, apiTaskData, taskServerError } = useFetchTask()
-    console.log('DATA>', apiTaskData?.data)
+    //console.log('DATA>', apiTaskData?.data)
     const allTask = apiTaskData?.data
     const recentTask = allTask?.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt)).slice(0, 10);
 
@@ -76,6 +76,7 @@ function Dashboard({setSelectedCard}) {
         </div>
 
         <div className="banner">
+            k
             <div className="banner-display">
 
             </div>
@@ -98,12 +99,12 @@ function Dashboard({setSelectedCard}) {
 
                     <tbody>
                         {
-                            data?.length <= 0 ? (
+                            sortedData?.length <= 0 ? (
                                 <>
                                     No Transction Record
                                 </>
                             ) : (
-                                data?.map((item, idx) => (
+                                sortedData?.map((item, idx) => (
                                     <tr key={idx}>
                                         <td className={`${item?.credit === true ? 'incoming' : 'outgoing'} `}>{item?.credit === true ? <CallReceivedIcon /> : <CallMadeIcon />}</td>
                                         <td>N {item.amount}</td>
@@ -127,7 +128,7 @@ function Dashboard({setSelectedCard}) {
                 <div className='top-task'>
                     <div className="tasks">
                         {
-                            data?.length <= 0 ? (
+                            recentTask?.length <= 0 ? (
                                 <>
                                 </>
                             ) : (

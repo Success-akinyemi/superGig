@@ -19,7 +19,7 @@ export function useFetch(query){
 
 
                 const { data, status} = !query ? await axios.get(`/api/auth/user/${id}`) : await axios.get(`/api/auth/${query}`)
-                console.log('Data from Hooks>>>', data)
+                //console.log('Data from Hooks>>>', data)
 
                 if(status === 200){
                     setData({ isLoading: false, apiData: data, status: status, serverError: null})
@@ -46,9 +46,8 @@ export function useFetchAccount(query){
             try {
                 const { id } =  await getUser();
 
-                console.log('BANNKER',id)
                 const { data, status} = !query ? await axios.get(`/api/getUserAccountInfo/${id}`, {headers: {Authorization: `Bearer ${token}`}}) : await axios.get(`/api/getUserAccountInfo/${id}`, {headers: {Authorization: `Bearer ${token}`}})
-                console.log('Data from Hook BANKs>>>', data)
+                //console.log('Data from Hook BANKs>>>', data)
 
                 if(status === 200){
                     setAccountData({ isLoadingAccount: false, apiAccountData: data, accountStatus: status, accountServerError: null})
@@ -72,12 +71,11 @@ export function useFetchPaymentOrder(query){
     useEffect(() => {
         const fetchPaymentData =  async () => {
             try {
-                console.log('HELLO')
                 const { id } = !query ? await getUser() : '';
 
 
                 const { data, status} = !query ? await axios.get(`/api/getPaymentOrder/${id}`, {headers: {Authorization: `Bearer ${token}`}}) : await axios.get(`/api/getPaymentOrder/${id}`,  {headers: {Authorization: `Bearer ${token}`}})
-                console.log('Payment Data from Hooks>>>', data)
+                //console.log('Payment Data from Hooks>>>', data)
 
                 if(status === 200){
                     setPaymentData({ isLoadingPayment: false, paymentData: data, paymentStatus: status, paymentServerError: null})
@@ -103,10 +101,10 @@ export function useFetchTransaction(query){
         const fetchTransactionData =  async () => {
             try {
 
-                const { id } = !query ? await getUser() : '';
+                const { id } = !query ? await getUser() : await getUser();
 
 
-                const { data, status} = !query ? await axios.get(`/api/getTransactionData/${query}`, {headers: {Authorization: `Bearer ${token}`}}) : await axios.get(`/api/getTransactionData/${query}`,  {headers: {Authorization: `Bearer ${token}`}})
+                const { data, status} = !query ? await axios.get(`/api/getTransactionData/${id}`, {headers: {Authorization: `Bearer ${token}`}}) : await axios.get(`/api/getTransactionData/${id}`,  {headers: {Authorization: `Bearer ${token}`}})
                 //console.log('Transaction Data from Hooks>>>', data)
 
                 if(status === 200){
@@ -136,7 +134,7 @@ export function useFetchReferres(query){
                 const { id } = !query ? await getUser() : '';
 
                 const { data, status} = !query ? await axios.get(`/api/getAllUserReferrees/${id}`, {headers: {Authorization: `Bearer ${token}`}}) : await axios.get(`/api/getAllUserReferrees/${query}`, {headers: {Authorization: `Bearer ${token}`}})
-                console.log('Referral Data from Hooks>>>', data)
+                //console.log('Referral Data from Hooks>>>', data)
 
                 if(status === 200){
                     setReferresData({ isLoadingReferres: false, apiReferresData: data, referresStatus: status, referresServerError: null})
@@ -162,10 +160,9 @@ export function useFetchTask(query){
         const fetchData =  async () => {
             try {
                 const { id } = !query ? await getUser() : await getUser();
-                console.log('ID', id, 'TASKID', query)
 
                 const { data, status} = !query ? await axios.get(`/api/getAllTask/${id}`, {headers: {Authorization: `Bearer ${token}`}}) : await axios.get(`/api/getTask/${id}/${query}`, {headers: {Authorization: `Bearer ${token}`}})
-                console.log('Task Data from Hooks>>>', data)
+                //console.log('Task Data from Hooks>>>', data)
 
                 if(status === 200){
                     setTaskData({ isLoadingTask: false, apiTaskData: data, taskStatus: status, taskServerError: null})
@@ -226,9 +223,8 @@ export function useFetchAllPaymentOrder(query){
             try {
                 const { id } = !query ? await getUser() : '';
                 
-                console.log('QEE', query)
                 const { data, status} = !query ? await axios.get(`/api/admin/getAllPaymentOrder/${query}`, {headers: {Authorization: `Bearer ${token}`}}) : await axios.get(`/api/admin/getAllPaymentOrder/${query}`, {headers: {Authorization: `Bearer ${token}`}})
-                console.log('ALL PAYMENT DATA from Hooks>>>', data)
+                //console.log('ALL PAYMENT DATA from Hooks>>>', data)
 
                 if(status === 200){
                     setData({ isLoading: false, apiData: data, status: status, serverError: null})
@@ -255,9 +251,8 @@ export function useFetchAPaymentOrder(query){
             try {
                 const { id } = !query ? await getUser() : '';
                 
-                console.log('QEE', query)
                 const { data, status} = !query ? await axios.get(`/api/admin/getAPaymentOrder/${query}`, {headers: {Authorization: `Bearer ${token}`}}) : await axios.get(`/api/admin/getAPaymentOrder/${query}`, {headers: {Authorization: `Bearer ${token}`}})
-                console.log('ALL PAYMENT DATA from Hooks>>>', data)
+                //console.log('ALL PAYMENT DATA from Hooks>>>', data)
 
                 if(status === 200){
                     setData({ isLoading: false, apiData: data, status: status, serverError: null})

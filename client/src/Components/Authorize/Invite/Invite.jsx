@@ -11,7 +11,7 @@ function Invite() {
     const { apiReferresData, isLoadingReferres, referresServerError} = useFetchReferres()
     const refLink = apiData?.referralLink
     const refUsers = apiReferresData?.data  
-    console.log('Link', apiReferresData?.data)
+    //console.log('Link', apiReferresData?.data)
     const [selectedCard, setSelectedCard] = useState(null)
     const [ userRefInfo, setRefUserInfo ] = useState({})
 
@@ -105,10 +105,10 @@ function Invite() {
                     </li>
                     {
                         refUsers?.map((item) => (
-                            <li>
+                            <li key={item?._id}>
                                 <span className="groupOne">
-                                    <p className="username">{item.username}</p>
-                                    <p className="email">{item.email}</p>
+                                    <p className="username">{item?.username}</p>
+                                    <p className="email">{item?.email}</p>
                                 </span>
                                 <span className="groupTwo" onClick={() => handleReferredUser(item)}>
                                     <MoreVertIcon className='icon' />

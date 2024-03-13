@@ -13,9 +13,12 @@ import CableTvComponent from '../../Components/Helpers/CableTvComponent/CableTvC
 import ElectricityComponent from '../../Components/Helpers/ElectricityComponent/ElectricityComponent'
 import Invite from '../../Components/Authorize/Invite/Invite'
 import SupportTicket from '../../Components/Authorize/SupportTicket/SupportTicket'
+import { useFetch } from '../../hooks/fetch.hook'
 
 
 function Home() {
+  const { apiData, isLoading, serverError } = useFetch();
+  const user = apiData
   const [selectedCard, setSelectedCard] = useState(null)
   const [bill, setBill] = useState(null)
   const [selectedMenuItem, setSelectedMenuItem] = useState(() => {
@@ -155,7 +158,7 @@ function Home() {
             <MenuIcon className='menuIcon' />
         </div>
         <div className="top">
-            <span className='greetings'>{greeting}, and Welcome back</span>
+            <span className='greetings'>{`Welcome back ${user?.username}`}</span>
             <div className="notifications">
                 <NotificationsNoneIcon className='bell' />
                 <span>update</span>

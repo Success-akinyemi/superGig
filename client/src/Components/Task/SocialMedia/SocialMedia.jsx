@@ -163,7 +163,7 @@ function SocialMedia() {
             <p> <h3 className="title">Total:</h3> <span className="item">{numberOfWorkers * unitPrice}</span></p>
           </div>
 
-          <button onClick={handleSetNewTask} className="comfirmBtn">Comfirm and Cheeckout</button>
+          <button onClick={handleSetNewTask} disabled={loadingTask} className="comfirmBtn">{loadingTask ? 'Creating' : 'Comfirm and Cheeckout'}</button>
         </div>
       )}
 

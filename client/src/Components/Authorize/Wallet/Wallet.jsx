@@ -9,7 +9,7 @@ function Wallet() {
   const { apiData, isLoading } = useFetch()
   const userId = apiData?._id
   const { isLoadingPayment, paymentData } = useFetchPaymentOrder()
-  console.log('first', paymentData)
+  //console.log('first', paymentData)
   const data = paymentData?.data
   const [selectedCard, setSelectedCard] = useState(null)
 
@@ -94,7 +94,7 @@ function Wallet() {
           <div className="card">
             {
               sortedData?.map((item) => (
-                <div className="infoCard">
+                <div className="infoCard" key={item?._id}>
                   <div>
                     <small className='id'>{item?._id}</small>
                     <p className="bankName">{item?.bankName}</p>

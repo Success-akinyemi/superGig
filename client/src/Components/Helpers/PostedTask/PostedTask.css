@@ -1,0 +1,42 @@
+.spinnerContainer{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: red;
+}
+
+.postedTask .t-1 .link{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+@media screen and (max-width: 650px) {
+    .postedTask tbody td:last-child{
+        display: none;
+    }
+
+}
+
+@media screen and (max-width: 500px) {
+
+    .postedTask thead th{
+        font-size: 14px;
+    }
+
+    .postedTask thead th:last-child,
+    .postedTask thead th:nth-child(4){
+        display: none;
+    }
+
+    .postedTask tbody td,
+    .postedTask .t-1 .link{
+        font-size: 15px;
+    }
+
+    .postedTask tbody td:last-child,
+    .postedTask tbody td:nth-child(4){
+        display: none;
+    }
+}

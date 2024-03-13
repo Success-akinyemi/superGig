@@ -35,7 +35,7 @@ app.use('/api/admin', adminRouter)
 
 //Scheduler to run every 10 mintues
 const rule = new schedule.RecurrenceRule();
-rule.minute = new schedule.Range(0, 59, 10); // This task runs every 10 minutes
+rule.minute = new schedule.Range(0, 59, 2); // This task runs every 10 minutes
 
 // Schedule the task
 const task = schedule.scheduleJob(rule, async () => {
