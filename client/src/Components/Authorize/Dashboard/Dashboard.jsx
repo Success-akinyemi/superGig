@@ -76,7 +76,6 @@ function Dashboard({setSelectedCard}) {
         </div>
 
         <div className="banner">
-            k
             <div className="banner-display">
 
             </div>
