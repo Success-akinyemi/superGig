@@ -376,7 +376,7 @@ export async function confirmPayment({id}){
     try {
         const res = await axios.post('/api/admin/confirmPayment', {id}, {headers: {Authorization: `Bearer ${token}`}} )
         if(res?.data.success){
-            toast.success(res.data.data)
+            toast.success(res?.data.data)
             window.location.reload()
         }
     } catch (error) {

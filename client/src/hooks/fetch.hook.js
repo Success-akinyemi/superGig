@@ -151,7 +151,7 @@ export function useFetchReferres(query){
     return referresData
 }
 
-/**Get All Task From DB */
+/**Get All Task From DB To Freelancer*/
 export function useFetchTask(query){
     const [taskData, setTaskData] = useState({ isLoadingTask: true, apiTaskData: null, taskStatus: null, taskServerError: null})
 
@@ -268,4 +268,32 @@ export function useFetchAPaymentOrder(query){
     }, [query])
 
     return data
+}
+
+/**Get All Task From DB To Ad*/
+export function useFetchTaskAdmin(query){
+    const [taskData, setTaskData] = useState({ isLoadingTask: true, apiTaskData: null, taskStatus: null, taskServerError: null})
+
+
+    useEffect(() => {
+        const fetchData =  async () => {
+            try {
+                const { id } = !query ? await getUser() : await getUser();
+
+                const { data, status} = !query ? await axios.get(`/api/admin/getAllTask/${id}`, {headers: {Authorization: `Bearer ${token}`}}) : await axios.get(`/api/admin/getTask/${id}/${query}`, {headers: {Authorization: `Bearer ${token}`}})
+                //console.log('Task Data from Hooks>>>', data)
+
+                if(status === 200){
+                    setTaskData({ isLoadingTask: false, apiTaskData: data, taskStatus: status, taskServerError: null})
+                } else{
+                    setTaskData({ isLoadingTask: false, apiTaskData: null, taskStatus: status, taskServerError: null})
+                }
+            } catch (error) {
+                setTaskData({ isLoadingTask: false, apiTaskData: null, taskStatus: null, taskServerError: error})
+            }
+        };
+        fetchData()
+    }, [query])
+
+    return taskData
 }

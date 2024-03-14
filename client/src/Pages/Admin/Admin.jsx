@@ -5,6 +5,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AdminSidebar from '../../Components/Authorize/AdminSidebar/AdminSidebar';
 import PaymentOrder from '../../Components/Admin/PaymentOrder/PaymentOrder';
 import ApprovePayment from '../../Components/Admin/Helpers/ApprovePayment/ApprovePayment';
+import AllJobs from '../../Components/Admin/AllJobs/AllJobs';
 
 function Admin() {
   const [selectedCard, setSelectedCard] = useState(null)
@@ -41,7 +42,7 @@ function Admin() {
       case 'taskPoint':
         return <PaymentOrder setSelectedCard={setSelectedCard} setPaymentOrderId={setPaymentOrderId} />
       case 'wallet':
-        return (<div>HELLO</div>)
+        return <AllJobs />
       case 'invite':
         return (<div>HELLO</div>)
       case 'support':

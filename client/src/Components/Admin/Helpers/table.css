@@ -1,0 +1,65 @@
+
+.table-bg{
+    width: 80%;
+    background: var(--primary-color);
+    margin-top: 15px;
+    border-radius: 20px;
+}
+
+.table-bg .top{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 10px;
+}
+
+.table-bg .top .category{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 13px;
+}
+
+.table-bg .top .category span{
+    cursor: pointer;
+}
+
+.table-bg .top .reload .icon{
+    font-size: 19px;
+    cursor: pointer;
+}
+
+.table-bg .table-card{
+    width: 100%;
+    padding: 10px;
+}
+
+.table-bg .table-card table{
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.table-bg .table-card table thead tr th{
+    border-bottom: 2px solid #333333a4;
+    padding-bottom: 5px;
+}
+
+
+.table-bg .table-card table tbody td{
+    height: 2.8rem;
+    border-bottom:  1px solid #3232322b;
+}
+
+.table-bg .table-card table .t-1{
+    text-align: left;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+

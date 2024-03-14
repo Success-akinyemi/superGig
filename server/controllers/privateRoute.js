@@ -427,9 +427,9 @@ export async function updateBankInfo(req, res){
         const user = await UserModel.findById(userId);
         
         if (!userId || !accountName || !getBankName || !accountNumber || !user) {
-            return res.status(404).json({ success: false, data: 'Invalid input or user does not exist' });
+            return res.status(404).json({ success: false, data: 'Invalid input' });
         }
-
+        console.log('BEFOR', accountNumber)
         let bankAccountDetail = await BankAccountDetailModel.findOne({ userId: userId });
         
         if (!bankAccountDetail) {
@@ -447,7 +447,7 @@ export async function updateBankInfo(req, res){
             bankAccountDetail.accountNumber = accountNumber
             await bankAccountDetail.save();
         }
-
+        console.log('AFTER', bankAccountDetail)
         return res.status(201).json({ success: true, data: 'Bank Account Information Updated' });
     } catch (error) {
         console.log('ERROR UPDATING BANK INFORMATION:', error);

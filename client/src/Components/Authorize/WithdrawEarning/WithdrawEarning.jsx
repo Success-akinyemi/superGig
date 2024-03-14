@@ -21,9 +21,11 @@ function WithdrawEarning({apiData}) {
     try {
       if(apiData?.earningWallet < transactionFee){
         toast.error('Insuffient Balance')
+        return
       }
-      if(apiData?.earningWallet < transactionFee){
-        toast.error('Insuffient Balance')
+      if(transactionFee < 500){
+        toast.error('Minimuin amount is 500')
+        return
       }
       setLoading(true)
       const res = await withdrawEarning({earningAmount, userId: apiData?._id})

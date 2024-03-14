@@ -12,7 +12,7 @@ const bankAccountDetailSchema = new mongoose.Schema({
         type: String
     },
     accountNumber: {
-        type: Number
+        type: String
     }
 },
 {timestamps: true}

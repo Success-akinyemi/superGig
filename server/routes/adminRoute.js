@@ -9,7 +9,8 @@ privateRouter.route('/confirmPayment').post(Protect, AdminProtect, controller.co
 
 privateRouter.route('/getAllPaymentOrder/:query').get(Protect, AdminProtect, controller.getAllPaymentOrder); //get all payment order
 privateRouter.route('/getAPaymentOrder/:id').get(Protect, AdminProtect, controller.getAPaymentOrder); //get all payment order
-
+privateRouter.route('/getAllTask/:id').get(Protect, controller.getAllTask)
+//privateRouter.route('/getTask/:id/:taskId').get(Protect, controller.getSpecificTask)
 
 
 export default privateRouter

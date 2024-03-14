@@ -1,0 +1,30 @@
+.allJobs{
+    min-height: 100vh;
+    width: 100%;
+}
+
+.allJobs .title{
+    font-size: 17px;
+    font-weight: 400;
+}
+
+.allJobs .table-bg .top .category span{
+    font-size: 15px;
+}
+
+.allJobs .active{
+    color: var(--main-color);
+    border-bottom: 2px solid var(--main-color);
+}
+
+@media screen and (max-width: 768px){
+    .allJobs .table-bg{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 450px){
+    .allJobs .table-bg{
+        width: 100%;
+    }
+}

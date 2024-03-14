@@ -12,9 +12,11 @@ function WithdrawBonus({apiData}) {
     try {
       if(apiData?.totalReferralEarnings < 500){
         toast.error('Insuffient Bonus Balance')
+        return;
       }
       if(apiData?.totalReferralEarnings < bonusAmount){
         toast.error('Insuffient Balance')
+        return;
       }
       setLoading(true)
       const res = await withdrawBonusEarning({bonusAmount, userId: apiData?._id})

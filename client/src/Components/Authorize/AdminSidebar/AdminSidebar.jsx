@@ -1,7 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import './AdminSidebar.css'
 import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
-import AccountBalanceWalletIcon from '@mui/icons-material/AccountBalanceWallet';
 import ContentPasteIcon from '@mui/icons-material/ContentPaste';
 import LiveHelpIcon from '@mui/icons-material/LiveHelp';
 import PeopleAltOutlinedIcon from '@mui/icons-material/PeopleAltOutlined';
@@ -10,6 +9,7 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import CloseIcon from '@mui/icons-material/Close';
 import { useState } from 'react';
 import { useFetch } from '../../../hooks/fetch.hook';
+import AssignmentIcon from '@mui/icons-material/Assignment';
 
 function AdminSidebar({ setAdminMenuItem, onCloseClick, homeMenu }) {  
   const navigate = useNavigate()
@@ -59,7 +59,7 @@ function AdminSidebar({ setAdminMenuItem, onCloseClick, homeMenu }) {
               <>
               <Link className={`link ${ sidebarMenuItem === 'dashboard' ? 'active' : ''}`} onClick={() => handleMenuItemClick('dashboard')}><SpaceDashboardIcon /> Dashboard</Link>
               <Link className={`link ${ sidebarMenuItem === 'taskPoint' ? 'active' : ''}`} onClick={() => handleMenuItemClick('taskPoint')}><ContentPasteIcon /> Payment order</Link>
-              <Link className={`link ${ sidebarMenuItem === 'wallet' ? 'active' : ''}`} onClick={() => handleMenuItemClick('wallet')}><AccountBalanceWalletIcon /> Wallet</Link>
+              <Link className={`link ${ sidebarMenuItem === 'wallet' ? 'active' : ''}`} onClick={() => handleMenuItemClick('wallet')}><AssignmentIcon /> All Jobs</Link>
               <Link className={`link ${ sidebarMenuItem === 'invite' ? 'active' : ''}`} onClick={() => handleMenuItemClick('invite')}><PeopleAltOutlinedIcon /> Invite</Link>
               <Link className={`link ${ sidebarMenuItem === 'support' ? 'active' : ''}`} onClick={() => handleMenuItemClick('support')}><LiveHelpIcon /> Support Ticket</Link>
               </>

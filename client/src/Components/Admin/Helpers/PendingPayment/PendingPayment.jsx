@@ -1,3 +1,4 @@
+import '../styling.css'
 import { useFetchAllPaymentOrder } from "../../../../hooks/fetch.hook"
 
 function PendingPayment({setSelectedCard, setPaymentOrderId}) {
@@ -22,12 +23,12 @@ function PendingPayment({setSelectedCard, setPaymentOrderId}) {
                 data?.length <= 0 ? (
                     <p className='noItem'>No Payment torder</p>
                 ) : (
-                    data?.map((item) => (
-                        <>
+                    data?.map((item, idx) => (
+                        <div key={idx} className="paymentItem">
                         <p className="p1">{item?.bankName}</p>
                         <p className="p2">{item?.amount}</p>
-                        <p className="p3" onClick={() => handleData(item?._id)}>{item?.status}</p>
-                        </>
+                        <p className="p3 action" onClick={() => handleData(item?._id)}>{item?.status}</p>
+                        </div>
                     ))
                 )
             }

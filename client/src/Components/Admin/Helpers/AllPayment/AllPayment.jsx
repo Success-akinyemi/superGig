@@ -4,7 +4,7 @@ import '../styling.css'
 
 function AllPayment() {
     const { apiData, isLoading } = useFetchAllPaymentOrder()
-    //console.log('DTA', apiData?.data)
+    console.log('DTA', apiData?.data)
     const data = apiData?.data
   return (
     <div className="paymentCard">
@@ -18,12 +18,12 @@ function AllPayment() {
                 data?.length <= 0 ? (
                     <p className='noItem'>No Payment torder</p>
                 ) : (
-                    data?.map((item) => (
-                        <>
+                    data?.map((item, idx) => (
+                        <div key={idx} className='paymentItem'>
                         <p>{item?.bankName}</p>
                         <p>{item?.amount}</p>
                         <p>{item?.status}</p>
-                        </>
+                        </div>
                     ))
                 )
             }

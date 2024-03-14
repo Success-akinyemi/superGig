@@ -1,4 +1,4 @@
-import React from 'react'
+import '../styling.css'
 import { useFetchAllPaymentOrder } from '../../../../hooks/fetch.hook'
 
 function PaidPayment() {
@@ -18,12 +18,12 @@ function PaidPayment() {
                 data?.length <= 0 ? (
                     <p className='noItem'>No Payment torder</p>
                 ) : (
-                    data?.map((item) => (
-                        <>
-                        <p>{item?.bankName}</p>
-                        <p>{item?.amount}</p>
-                        <p>{item?.status}</p>
-                        </>
+                    data?.map((item, idx) => (
+                        <div key={idx} className='paymentItem'>
+                            <p>{item?.bankName}</p>
+                            <p>{item?.amount}</p>
+                            <p>{item?.status}</p>
+                        </div>
                     ))
                 )
             }

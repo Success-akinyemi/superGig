@@ -4,6 +4,7 @@
 //get all task: completed, not completed
 
 import PaymentOrderModel from "../models/PaymentOrder.js"
+import TaskModel from "../models/Task.js"
 import UserModel from "../models/User.js"
 
 
@@ -47,7 +48,6 @@ export async function getAllPaymentOrder(req, res){
             paymentData = await PaymentOrderModel.find()
 
         }
-        
         res.status(200).json({ success: true, data: paymentData})
     } catch (error) {
         console.log('ERROR GETTING ALL PAYMENT ORDERS', error)
@@ -75,23 +75,48 @@ export async function getAPaymentOrder(req, res){
 //confirm payment to freelancer
 export async function confirmPayment(req, res){
     const { id } = req.body
+    console.log('COnfirm', id)
     try {
         const paymentOrder = await PaymentOrderModel.findById({ _id: id })
 
         if(!paymentOrder){
             return res.status(404).json({ success: false, data: 'Payment not found'})
         }
+        console.log('orde', paymentOrder)
 
         if(paymentOrder.status === 'Paid'){
             return res.status(304).json({ success: true, data: 'Payment has previously been confirmed'})
         }
 
-        paymentOrder.status === 'Paid'
+        paymentOrder.status = 'Paid'
         await paymentOrder.save()
+        console.log('afetr order', paymentOrder)
 
         res.status(201).json({ success: true, data: 'Payment has been confimed'})
     } catch (error) {
         console.log('UNABLE TO CONFIRM PAYMENT', error)
         res.status(500).json({ success: false, data: 'Unable to confirm Payment' })
+    }
+}
+
+// get all job
+export async function getAllTask(req, res){
+    const { id } = req.params
+    console.log('ID', id)
+    try {
+        const allTask = await TaskModel.find()
+        const user = await UserModel.findById({ _id: id })
+        if(!user.isAdmin){
+            return res.status(404).json({ success: false, data: 'Invalid User'})
+        }
+        if(!allTask){
+            return res.status(404).json({ success: false, data: 'No Available Task at the moment please check later'})
+        }
+
+        console.log('TASK', allTask)
+        res.status(200).json({ success: true, data: allTask})
+    } catch (error) {
+        console.log('COULD NOT GET ALL TASK ADMIN', error)
+        res.status(500).json({ success: false, data: 'Could not get all available Task'})
     }
 }
