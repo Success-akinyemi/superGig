@@ -17,6 +17,21 @@
     border-bottom: 2px solid var(--main-color);
 }
 
+.taskPoint select{
+    display: none;
+}
+
+@media screen and (max-width: 500px){
+    .taskPoint select{
+        display: block;
+        padding: 5px;
+    }
+
+    .taskPoint .table-bg .top .category{
+        display: none;
+    }
+}
+
 @media screen and (max-width: 768px){
     .taskPoint .table-bg{
         width: 100%;

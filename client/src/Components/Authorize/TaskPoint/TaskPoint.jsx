@@ -38,6 +38,13 @@ function TaskPoint() {
               <span>Rejected</span>
             </div>
 
+            <select onClick={(e) => handleTableItemClick(e.target.value)}>
+                <option value='available'>Available</option>
+                <option value='posted' >Posted</option>
+                <option>Completed</option>
+                <option>Rejected</option>
+            </select>
+
             <div className="reload">
               <ReplayIcon className='icon'/>
             </div>

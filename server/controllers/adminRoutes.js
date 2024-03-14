@@ -6,6 +6,9 @@
 import PaymentOrderModel from "../models/PaymentOrder.js"
 import TaskModel from "../models/Task.js"
 import UserModel from "../models/User.js"
+import nodemailer from 'nodemailer'
+import { config } from 'dotenv'
+config()
 
 
 //make admin
@@ -118,5 +121,61 @@ export async function getAllTask(req, res){
     } catch (error) {
         console.log('COULD NOT GET ALL TASK ADMIN', error)
         res.status(500).json({ success: false, data: 'Could not get all available Task'})
+    }
+}
+
+//in order to send scustomise email from the client you need a text editor in the client side latter
+export async function sendEmail(req, res){
+    try {
+        const users = await UserModel.find()
+        const userEmails = users.map(user => user.email)
+        console.log('Email', userEmails)
+
+        const transporter = nodemailer.createTransport({
+            service: 'Gmail',
+            auth: {
+                user: process.env.NODEMAILER_USER, // generated ethereal user
+                pass: process.env.NODEMAILER_PASSWORD, // generated ethereal password
+              },
+        });
+
+        const commonEmailContent = `
+            <h2 style="color: #333333;">Earn more today completing gigs</h2>
+            <p style="color: #666666;">Gigs available for you today, get started:</p>
+            <ul style="color: #666666; font-size: 17px;">
+                <li>Login to your account</li>
+                <li>Update your social media account profile in account page</li>
+                <li>Head over to Task Point</li>
+                <li>Start earning completing gigs</li>
+            </ul>
+            <p style="color: #666666;"><b>As easy as Pie!</b></p>
+            <br />
+            <a href="${process.env.MAIL_WEBSITE_LINK}" style="display: inline-block; background-color: #db3e00; color: #ffffff; padding: 10px 20px; text-decoration: none; border-radius: 5px; font-weight: bold;">Get Started</a>
+            <p style="color: #666666;">Best regards,</p>
+            <p style="color: #666666;">${process.env.MAIL_WEBSITE_NAME}</p>
+        `;
+
+    for (const user of users) {
+        const emailContent = `
+            <h1>Hi, ${user.username},</p>
+            ${commonEmailContent}
+        `;
+
+        // Define email options
+        const mailOptions = {
+            from: `${process.env.NODEMAILER_USER}`,
+            to: user.email,
+            subject: 'Hurray Excitng News from Supergig',
+            html: emailContent // Your HTML content with styling and button
+        };
+
+        // Send email
+        await transporter.sendMail(mailOptions);
+    }
+        
+        res.status(201).json({ success: true, data: 'Email sent successful' })
+    } catch (error) {
+        console.log('UNABLE TO SEND EMAIL,', error)
+        res.status(500).json({ success: false, data: 'Unable to send email'})
     }
 }
