@@ -6,18 +6,17 @@ import TWImg from '../../../../assets/TW.png'
 import THRImg from '../../../../assets/THR.png'
 import TKImg from '../../../../assets/TK.png'
 import { formatDistanceToNow } from 'date-fns'
-
 import { useFetchTaskAdmin } from '../../../../hooks/fetch.hook'
 import Spinner from '../../../Helpers/Spinner/Spinner'
 
 
-function AllJob() {
+function AllJob({setTotal}) {
     const {apiTaskData, isLoadingTask} = useFetchTaskAdmin()
     const allTask = apiTaskData?.data
     const sortedData = allTask?.sort((a,b) => new Date(b.createdAt) - new Date(a.createdAt))
-
+    setTotal(sortedData?.length)
   return (
-    <table className='availableTask'>
+    <table className='allJob'>
     <thead>
         <tr>
             <th></th>

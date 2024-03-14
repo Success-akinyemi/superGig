@@ -7,12 +7,14 @@ import ReplayIcon from '@mui/icons-material/Replay';
 function AllJobs() {
     const [selectedTable, setSelectedTable] = useState('available')
     const [ active, setActive ] = useState('available')
+    const [total, setTotal] = useState()
+
     const renderSelectedTable = () => {
       switch(selectedTable) {
         case 'available':
-          return <AllJob />;
+          return <AllJob setTotal={setTotal} />;
         case 'posted':
-          return <CompleteJob />
+          return <CompleteJob setTotal={setTotal} />
   
   
         default: 
@@ -32,10 +34,21 @@ function AllJobs() {
         <div className="table-bg">
         <div className="top">
             <div className="category">
-            <span className={`${active === 'available' ? 'active' : ''}`} onClick={() => handleTableItemClick('available')}>Available</span>
-            <span className={`${active === 'posted' ? 'active' : ''}`} onClick={() => handleTableItemClick('posted')}>completed</span>
-            <span>Completed</span>
-            <span>Rejected</span>
+                <span className={`${active === 'available' ? 'active' : ''}`} onClick={() => handleTableItemClick('available')}>Available</span>
+                <span className={`${active === 'posted' ? 'active' : ''}`} onClick={() => handleTableItemClick('posted')}>Completed</span>
+                <span>Completed</span>
+                <span>Rejected</span>
+            </div>
+
+            <select onClick={(e) => handleTableItemClick(e.target.value)}>
+                <option value='available'>Available</option>
+                <option value='posted' >Completed</option>
+                <option>Completed</option>
+                <option>Rejected</option>
+            </select>
+
+            <div className="total">
+                Total: {total}
             </div>
 
             <div className="reload">

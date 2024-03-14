@@ -17,9 +17,24 @@
     border-bottom: 2px solid var(--main-color);
 }
 
+.allJobs select{
+    display: none;
+}
+
 @media screen and (max-width: 768px){
     .allJobs .table-bg{
         width: 100%;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .allJobs select{
+        display: block;
+        padding: 5px;
+    }
+
+    .allJobs .table-bg .top .category{
+        display: none;
     }
 }
 
