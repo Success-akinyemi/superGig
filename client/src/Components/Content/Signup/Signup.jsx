@@ -158,7 +158,7 @@ function Signup({isActive, referredBy}) {
       </div>
 
     </div>
-</form>
+    </form>
   )
 }
 

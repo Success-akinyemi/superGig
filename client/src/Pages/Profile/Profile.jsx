@@ -217,47 +217,47 @@ function Profile() {
                     <span className='logoutBtn' onClick={handleLogout}>Logout</span>
                 </div>
                 <div className="infoCard">
-                <h2>Update Account</h2>
-                <p>To complete task update accounts here</p>
+                    <h2>Update Account</h2>
+                    <p>To complete task update accounts here</p>
 
-                <div className="content">
-                    <div className="inputField">
-                        <label>First Name</label>
-                        <input defaultValue={userData?.firstName} onChange={handleChange} id='firstName' type='text' />
-                    </div>
-                    <div className="inputField">
-                        <label>Middle Name</label>
-                        <input defaultValue={userData?.middleName} onChange={handleChange} id='middleName' type='text' />
-                    </div>
-                    <div className="inputField">
-                        <label>Last Name</label>
-                        <input defaultValue={userData?.lastName} onChange={handleChange} id='lastName' type='text' />
-                    </div>                    
-                    <div className="inputField">
-                        <label>Username</label>
-                        <input defaultValue={userData?.username} onChange={handleChange} id='username' type='text' />
-                    </div>
-                    <div className="inputField">
-                        <label>Email</label>
-                        <input defaultValue={userData?.email} onChange={handleChange} disabled />
-                    </div>
-                    <div className="inputField">
-                        <label>Phone Number</label>
-                        <input defaultValue={userData?.phoneNumber} onChange={handleChange} id='phoneNumber' type='number' minLength={11} maxLength={11}  />
-                    </div>
-                    <div className="inputField">
-                        <label>Gender</label>
-                        <input defaultValue={userData?.gender} onChange={handleChange} id='gender' type='text'/>
-                    </div>
+                    <div className="content">
+                        <div className="inputField">
+                            <label>First Name</label>
+                            <input defaultValue={userData?.firstName} onChange={handleChange} id='firstName' type='text' />
+                        </div>
+                        <div className="inputField">
+                            <label>Middle Name</label>
+                            <input defaultValue={userData?.middleName} onChange={handleChange} id='middleName' type='text' />
+                        </div>
+                        <div className="inputField">
+                            <label>Last Name</label>
+                            <input defaultValue={userData?.lastName} onChange={handleChange} id='lastName' type='text' />
+                        </div>                    
+                        <div className="inputField">
+                            <label>Username</label>
+                            <input defaultValue={userData?.username} onChange={handleChange} id='username' type='text' />
+                        </div>
+                        <div className="inputField">
+                            <label>Email</label>
+                            <input defaultValue={userData?.email} onChange={handleChange} disabled />
+                        </div>
+                        <div className="inputField">
+                            <label>Phone Number</label>
+                            <input defaultValue={userData?.phoneNumber} onChange={handleChange} id='phoneNumber' type='number' minLength={11} maxLength={11}  />
+                        </div>
+                        <div className="inputField">
+                            <label>Gender</label>
+                            <input defaultValue={userData?.gender} onChange={handleChange} id='gender' type='text'/>
+                        </div>
 
-                    <div>
-                        {
-                            apiData?._id && (
-                                <button onClick={handleUpdate} disabled={isLoading}>{isLoading ? 'Updating...' : 'Save'}</button>
-                            )
-                        }
+                        <div>
+                            {
+                                apiData?._id && (
+                                    <button onClick={handleUpdate} disabled={isLoading}>{isLoading ? 'Updating...' : 'Save'}</button>
+                                )
+                            }
+                        </div>
                     </div>
-                </div>
                 </div>
             </div>
 

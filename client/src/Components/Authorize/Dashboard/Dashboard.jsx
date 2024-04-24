@@ -11,6 +11,7 @@ import IGImg from '../../../assets/IG.png'
 import FBImg from '../../../assets/FB.png'
 import TWImg from '../../../assets/TW.png'
 import THRImg from '../../../assets/THR.png'
+import TKImg from '../../../assets/TK.png' 
 import { topTask } from '../../../data/topTask';
 import { useFetch, useFetchTask, useFetchTransaction } from '../../../hooks/fetch.hook';
 import { formatDistanceToNow } from 'date-fns'

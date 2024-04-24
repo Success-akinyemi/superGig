@@ -15,10 +15,10 @@ function Hero() {
   return (
     <div className='landingPagePadding hero'>
         <div className="left">
-        <div className="top">
-            <span onClick={() => setContent('business')} className={`contentOption ${content === 'business' ? 'active' : ''}`}>Business</span>
-            <span onClick={() => setContent('freelance')} className={`contentOption ${content === 'freelance' ? 'active' : ''}`}>Freelance</span>
-        </div>
+            <div className="top">
+                <span onClick={() => setContent('business')} className={`contentOption ${content === 'business' ? 'active' : ''}`}>Business</span>
+                <span onClick={() => setContent('freelance')} className={`contentOption ${content === 'freelance' ? 'active' : ''}`}>Freelance</span>
+            </div>
             {
                 content === 'business' && (
                     <div className="content contentOne">
